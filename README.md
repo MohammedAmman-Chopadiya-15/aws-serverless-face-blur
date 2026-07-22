@@ -7,6 +7,7 @@ A fully automated, serverless image processing pipeline that detects and blurs f
 - [Architecture and Workflow](#architecture-and-workflow)
 - [Tech Stack](#tech-stack)
 - [Key Features](#key-features)
+- [Project Gallery](#project-gallery)
 - [Security and Best Practices](#security-and-best-practices)
 - [Lessons Learned](#lessons-learned)
 
@@ -30,6 +31,12 @@ The system follows a highly decoupled, event-driven architecture:
 6. **Secure Storage (Amazon S3):** The final, redacted image is saved to a separate S3 destination bucket.
 7. **Monitoring (Amazon CloudWatch):** All Lambda invocations, errors, and performance metrics are logged and monitored in real-time via CloudWatch.
 
+### System Architecture
+![System Architecture](./images/System%20Architecture.png)
+
+*High-level event-driven architecture showing the flow from S3 to SQS to Lambda and Rekognition.*
+
+
 ---
 
 ## Tech Stack
@@ -51,6 +58,26 @@ The system follows a highly decoupled, event-driven architecture:
 - **Event-Driven and Decoupled:** By using SQS between S3 and Lambda, the system is highly resilient. If the Lambda function experiences a temporary failure, the message remains in the queue for automatic retry.
 - **AI-Powered Privacy:** Leverages Amazon Rekognition's pre-trained deep learning models to accurately detect faces at any angle or scale, removing the need to train custom computer vision models.
 - **Automated Monitoring:** CloudWatch provides deep visibility into function execution times, memory usage, and error rates, ensuring high operational reliability.
+
+---
+
+## Project Gallery
+
+### Lambda Function Configuration
+![Lambda Function](./images/Lambda%20Function.png)
+*The AWS Lambda function console showing the Python runtime and environment variables configured for image processing.*
+
+### CloudWatch Monitoring
+![Monitoring](./images/Monitoring.png)
+*Amazon CloudWatch metrics tracking Lambda invocations, duration, and error rates in real-time.*
+
+### Event Logs
+![Event Log](./images/Event%20Log.png)
+*CloudWatch Logs showing the detailed execution trace and debugging information for the image processing pipeline.*
+
+### Blurred Face Output
+![Blur face Output](./images/Blur%20face%20Output.png)
+*Example output demonstrating the AI-powered face detection and blurring applied to the uploaded image.*
 
 ---
 
